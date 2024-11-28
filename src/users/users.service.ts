@@ -36,6 +36,15 @@ export class UsersService {
     }
    
   }
+  async findByUsername(username: string) : Promise<User>{
+    try {
+      const user: User = await this.userRepository.findOneByOrFail({username: username})
+      return user
+    } catch (error) {
+      throw new HttpException(`Usuario não encontrado com o username ${username}`, 404)
+    }
+   
+  }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
 

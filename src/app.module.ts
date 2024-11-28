@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ConfigService } from '@nestjs/config';
 import { HashModule } from './hash/hash.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+
 @Module({
   imports: [ ConfigModule.forRoot({
     isGlobal: true, 
@@ -22,7 +24,7 @@ import { HashModule } from './hash/hash.module';
       synchronize: true, 
     }),
   })
-  , UsersModule],
+  , UsersModule, AuthenticationModule],
   controllers: [],
   providers: [],
 })

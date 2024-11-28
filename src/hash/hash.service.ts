@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { genSalt, hash } from 'bcrypt'
+import { genSalt, hash, compare } from 'bcrypt'
 @Injectable()
 export class HashService {
 
@@ -8,6 +8,9 @@ export class HashService {
      */
     public async createHash(password: string) : Promise<string> {
         return await hash(password, 10)
+    }
+    public async compareHash(encrypted: string, password: string) : Promise<boolean> {
+        return await compare(password, encrypted)
     }
 
 }
