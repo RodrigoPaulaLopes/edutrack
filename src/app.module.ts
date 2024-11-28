@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/entities/user.entity';
 import { ConfigModule } from '@nestjs/config';
 import { ConfigService } from '@nestjs/config';
+import { HashModule } from './hash/hash.module';
 @Module({
   imports: [ ConfigModule.forRoot({
     isGlobal: true, 
@@ -22,7 +22,7 @@ import { ConfigService } from '@nestjs/config';
       synchronize: true, 
     }),
   })
-  ,UsersModule],
+  , UsersModule],
   controllers: [],
   providers: [],
 })
